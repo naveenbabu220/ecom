@@ -1,0 +1,11 @@
+{% extends 'main/basic.html'%}
+{%block title%}types{%endblock%}}
+{%block body%} 
+{{cat}}
+{%for i in cat.types_set.all%}
+{{i}}
+{{i.price}}
+{%load static%}
+<img src="{{i.image.url}}" alt="reload image">
+{%endfor%}
+{%endblock%}

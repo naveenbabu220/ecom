@@ -1,0 +1,63 @@
+{% extends 'main/basic.html'%}
+{%block title%}home{%endblock%}}
+
+{%block body%} 
+<style>
+    
+    .product{
+        background-color: rgb(212, 219, 212);
+        color: indigo;
+        display: grid;
+        grid-auto-flow: dense;
+        grid-auto-columns: max-content;
+        grid-auto-rows: minmax(100px,auto);
+        grid-gap: 5px;
+        grid-template-columns: repeat(4,1fr) ;
+    
+    }
+    .details{
+        background-color: rgb(8, 78, 99);
+        color: indigo;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    img{
+        height: 200px;
+        width: 100px;
+    }
+    .types{
+        font-size:12pt;
+        color: rgb(59, 224, 18);
+    }
+</style>
+
+{% for i in cat %}
+{{i.cat}}
+{% endfor %}
+<div class="product">
+    
+    {% for types in types %}
+    <div class="details">
+    {% load static %}
+    <div>
+    <ul><img src="{{types.image.url}}" alt="img error"></ul>
+    </div>
+    <div>
+        {% if user.is_authenticated%}
+            <ul><a href="{{types.add_to_cart_url}}">add to cart</a>
+            <a href="{{types.remove_from_cart_url}}">remove from cart</a></ul>
+        {% else%}
+                <ul><h3>You have to login</h3></ul>
+        {% endif %}    
+        <div class="types">    
+            <ul>{{types.title}}</ul> 
+            <ul>{{types.price}}</ul>
+            <ul>{{types.size}}</ul>
+        </div>
+    </div>
+    </div>
+    {%endfor%}
+    
+</div>
+{%endblock%}

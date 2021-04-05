@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .product{
+            background-color: green;
+            color: indigo;
+            display: grid;
+            grid-auto-flow: dense;
+            grid-auto-columns: max-content;
+            grid-auto-rows: minmax(100px,auto);
+            grid-gap: 5px;
+            grid-template-columns: repeat(4,1fr) ;
+        }
+        .details{
+            background-color: green;
+            color: indigo;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    </style>
+    <h1>hi lets shop together</h1>
+    <div>
+    {% for cat in cat %}
+    <ul><a href="/cat/{{cat}}">{{cat.cat}}</a></ul>
+    {% endfor %}
+    </div>
+</body>
+</html>

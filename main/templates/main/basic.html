@@ -1,0 +1,34 @@
+<html lang="en">
+{% load static %}
+<head>
+    <style>
+        body{
+            background-color: rgb(243, 242, 235);
+        }
+        .jaga{
+            width: 1150px;
+            height: 150px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}basic{%endblock%}</title>
+</head>
+<body>
+            
+    <ul><a href="/"><img class="jaga" src="{%static 'download.png'%}" alt="img"></a></ul>
+    {%if messages%}
+        {%for m in messages%}
+            {{m}}
+        {%endfor%}
+    {%endif%}
+    {% if user.is_authenticated%}
+    {{user}}
+    <a href="/summary">summary</a>
+    <a href="/logout">logout</a>
+    {% else %}
+    <a href="/login">login</a>
+    {% endif %}
+    {%block body%}basic body{%endblock%}
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends 'main/basic.html'%}
+{%block title%}summary{%endblock%}}
+
+{%block body%} 
+<style>
+    
+    .product{
+        font-size:12pt;
+        color: rgb(22, 27, 22);
+    }
+</style>
+
+<table>
+    <tr><th>title</th>
+    <th>img</th>
+    <th>price</th>
+    <th>quantity</th>
+    <th>pricecart</th></tr>
+    {% for i in order.items.all %}
+     <tr>   
+    <td><h3> <span class="product">{{i.types.title}}</span></h3></td>
+    {% load static %}
+    <td><ul><img src="{{i.types.image.url}}" alt="img error"></ul></td>
+    <td><h3>  <span class="product"> {{i.types.price}}</span></h3></td>
+    <td><h3> <span class="product"> + {{i.quanty}} - </span></h3></td>
+    <td><h3> <span class="product"> {{i.pricecart}}</span> </h3></td>
+    </tr>
+    {%endfor%}
+</table>
+    <div>
+    <h2>total price</h2>
+    {{order.total}}
+    </div>
+    <div>
+    <a href="/">home</a>
+    <a href="/payment">payment</a>
+    </div>
+
+
+{%endblock%}
